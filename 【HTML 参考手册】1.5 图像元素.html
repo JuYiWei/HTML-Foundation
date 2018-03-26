@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  1.15 脚本 - 
+  1.5 图像元素 - 
   
   </title>
  <meta name="description" content="">
@@ -292,43 +292,75 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>1.15 脚本</h1>
+<h1>1.5 图像元素</h1>
 
 <ul>
 <li>
-<a href="#toc_0">1、使用脚本</a>
+<a href="#toc_0">1、img 图像</a>
 </li>
 <li>
-<a href="#toc_1">2、禁用脚本处理</a>
+<a href="#toc_1">2、SVG</a>
 </li>
 <li>
-<a href="#toc_2">3、更多</a>
+<a href="#toc_2">3、canvas 画布</a>
 </li>
 </ul>
 
 
-<blockquote>
-<p>JavaScript 脚本；</p>
-</blockquote>
-
-<h3 id="toc_0">1、使用脚本</h3>
-
-<pre><code>&lt;script&gt;
-    document.write(&quot;Hello World!&quot;);
-&lt;/script&gt;
-</code></pre>
-
-<h3 id="toc_1">2、禁用脚本处理</h3>
-
-<pre><code>&lt;noscript&gt;抱歉，你的浏览器不支持 JavaScript!&lt;/noscript&gt;
-</code></pre>
-
-<h3 id="toc_2">3、更多</h3>
+<h3 id="toc_0">1、img 图像</h3>
 
 <ul>
-<li>参考 JavaScript，详细了解；</li>
-<li><a href="http://www.runoob.com/js/js-tutorial.html">JavaScript 菜鸟基础</a></li>
+<li>图像资源；</li>
 </ul>
+
+<pre><code>&lt;img src=&quot;https://ws2.sinaimg.cn/large/006tNc79gy1foq7ck1a6aj30it050mxx.jpg&quot; 
+     alt=&quot;图片描述&quot; height=&quot;100&quot; width=&quot;300&quot; &gt;
+</code></pre>
+
+<ul>
+<li>图像服务端 map，提交点击图片的位置；</li>
+</ul>
+
+<pre><code>&lt;a href=&quot;https://www.baidu.com&quot;&gt;
+    &lt;img src=&quot;https://ws2.sinaimg.cn/large/006tNc79gy1foq7ck1a6aj30it050mxx.jpg&quot;
+         alt=&quot;图片描述&quot; ismap &gt;
+&lt;/a&gt;
+</code></pre>
+
+<ul>
+<li>图像本地 map，点击图片不同位置，触发不同事件；</li>
+</ul>
+
+<pre><code>&lt;img src=&quot;https://ws2.sinaimg.cn/large/006tNc79gy1foq7ck1a6aj30it050mxx.jpg&quot;
+     alt=&quot;图片描述&quot; usemap=&quot;#planetmap&quot; width=&quot;200&quot; height=&quot;100&quot;&gt;
+&lt;map name=&quot;planetmap&quot;&gt;
+    &lt;area shape=&quot;rect&quot; coords=&quot;0,0,100,100&quot; href=&quot;index.html&quot; alt=&quot;a&quot;&gt;
+    &lt;area shape=&quot;circle&quot; coords=&quot;150,50,50&quot; href=&quot;test.html&quot; alt=&quot;b&quot;&gt;
+&lt;/map&gt;
+</code></pre>
+
+<ul>
+<li>图片描述；</li>
+</ul>
+
+<pre><code>&lt;figure&gt;
+    &lt;img src=&quot;https://ws2.sinaimg.cn/large/006tNc79gy1foq7ck1a6aj30it050mxx.jpg&quot;&gt;
+    &lt;figcaption&gt;Fig.1 - A view of the pulpit rock in Norway.&lt;/figcaption&gt;
+&lt;/figure&gt;
+</code></pre>
+
+<h3 id="toc_1">2、SVG</h3>
+
+<pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; height=&quot;190&quot;&gt;
+    &lt;polygon points=&quot;100,10 40,180 190,60 10,60 160,180&quot;
+             style=&quot;fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;&quot; /&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<h3 id="toc_2">3、canvas 画布</h3>
+
+<pre><code>&lt;canvas id=&quot;myCanvas&quot; width=&quot;200&quot; height=&quot;100&quot;&gt;&lt;/canvas&gt;
+</code></pre>
 
 
 </div>
@@ -340,15 +372,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.14%20%E9%A2%9C%E8%89%B2.html"  title="Previous Post: 1.14 颜色">&laquo; 1.14 颜色</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.4%20%E6%A1%86%E6%9E%B6%E5%85%83%E7%B4%A0.html"  title="Previous Post: 1.4 框架元素">&laquo; 1.4 框架元素</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.16%20%E5%AE%9E%E4%BD%93.html" 
-	        title="Next Post: 1.16 实体">1.16 实体 &raquo;</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.6%20%E9%9F%B3%E8%A7%86%E9%A2%91%E5%85%83%E7%B4%A0.html" 
+	        title="Next Post: 1.6 音视频元素">1.6 音视频元素 &raquo;</a>
 	    
 	</div>
   </div>
@@ -361,7 +393,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.15%20%E8%84%9A%E6%9C%AC.html';
+		var currentURL = '%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.5%20%E5%9B%BE%E5%83%8F%E5%85%83%E7%B4%A0.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

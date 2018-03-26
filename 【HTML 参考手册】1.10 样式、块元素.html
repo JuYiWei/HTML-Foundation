@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  1.15 脚本 - 
+  1.10 样式/块元素 - 
   
   </title>
  <meta name="description" content="">
@@ -292,43 +292,89 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>1.15 脚本</h1>
+<h1>1.10 样式/块元素</h1>
 
 <ul>
 <li>
-<a href="#toc_0">1、使用脚本</a>
+<a href="#toc_0">1、style 样式元素</a>
 </li>
 <li>
-<a href="#toc_1">2、禁用脚本处理</a>
+<a href="#toc_1">2、div 块元素</a>
 </li>
 <li>
-<a href="#toc_2">3、更多</a>
+<a href="#toc_2">3、span 行内元素</a>
+</li>
+<li>
+<a href="#toc_3">4、语义元素（新定义）</a>
+<ul>
+<li>
+<a href="#toc_4">header 页眉</a>
+</li>
+<li>
+<a href="#toc_5">footer 页脚</a>
+</li>
+<li>
+<a href="#toc_6">section 章节区域</a>
+</li>
+<li>
+<a href="#toc_7">article 独立内容</a>
+</li>
+<li>
+<a href="#toc_8">aside 侧栏</a>
+</li>
+<li>
+<a href="#toc_9">details 内容展开</a>
+</li>
+<li>
+<a href="#toc_10">dialog 提示</a>
+</li>
+</ul>
 </li>
 </ul>
 
 
-<blockquote>
-<p>JavaScript 脚本；</p>
-</blockquote>
+<h3 id="toc_0">1、style 样式元素</h3>
 
-<h3 id="toc_0">1、使用脚本</h3>
-
-<pre><code>&lt;script&gt;
-    document.write(&quot;Hello World!&quot;);
-&lt;/script&gt;
+<pre><code>    &lt;style&gt;
+        p {
+            color: green;
+        }
+    &lt;/style&gt;
 </code></pre>
 
-<h3 id="toc_1">2、禁用脚本处理</h3>
+<h3 id="toc_1">2、div 块元素</h3>
 
-<pre><code>&lt;noscript&gt;抱歉，你的浏览器不支持 JavaScript!&lt;/noscript&gt;
+<pre><code>&lt;div&gt;
+
+&lt;/div&gt;
 </code></pre>
 
-<h3 id="toc_2">3、更多</h3>
+<h3 id="toc_2">3、span 行内元素</h3>
+
+<pre><code>&lt;span&gt;
+
+&lt;/span&gt;
+</code></pre>
+
+<h3 id="toc_3">4、语义元素（新定义）</h3>
 
 <ul>
-<li>参考 JavaScript，详细了解；</li>
-<li><a href="http://www.runoob.com/js/js-tutorial.html">JavaScript 菜鸟基础</a></li>
+<li>需要 CSS 自定义，本身其实就是个 div；</li>
 </ul>
+
+<h4 id="toc_4">header 页眉</h4>
+
+<h4 id="toc_5">footer 页脚</h4>
+
+<h4 id="toc_6">section 章节区域</h4>
+
+<h4 id="toc_7">article 独立内容</h4>
+
+<h4 id="toc_8">aside 侧栏</h4>
+
+<h4 id="toc_9">details 内容展开</h4>
+
+<h4 id="toc_10">dialog 提示</h4>
 
 
 </div>
@@ -340,15 +386,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.14%20%E9%A2%9C%E8%89%B2.html"  title="Previous Post: 1.14 颜色">&laquo; 1.14 颜色</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.9%20%E8%A1%A8%E6%A0%BC%E5%85%83%E7%B4%A0.html"  title="Previous Post: 1.9 表格元素">&laquo; 1.9 表格元素</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.16%20%E5%AE%9E%E4%BD%93.html" 
-	        title="Next Post: 1.16 实体">1.16 实体 &raquo;</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.11%20%E5%85%83%E4%BF%A1%E6%81%AF%E5%85%83%E7%B4%A0.html" 
+	        title="Next Post: 1.11 元信息元素">1.11 元信息元素 &raquo;</a>
 	    
 	</div>
   </div>
@@ -361,7 +407,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.15%20%E8%84%9A%E6%9C%AC.html';
+		var currentURL = '%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.10%20%E6%A0%B7%E5%BC%8F%E3%80%81%E5%9D%97%E5%85%83%E7%B4%A0.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

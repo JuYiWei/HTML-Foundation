@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  1.15 脚本 - 
+  1.16 音频、视频 - 
   
   </title>
  <meta name="description" content="">
@@ -292,43 +292,132 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>1.15 脚本</h1>
+<h1>1.16 音频、视频</h1>
 
 <ul>
 <li>
-<a href="#toc_0">1、使用脚本</a>
+<a href="#toc_0">1、视频元素</a>
 </li>
 <li>
-<a href="#toc_1">2、禁用脚本处理</a>
+<a href="#toc_1">2、方法</a>
 </li>
 <li>
-<a href="#toc_2">3、更多</a>
+<a href="#toc_2">3、属性</a>
+</li>
+<li>
+<a href="#toc_3">4、事件</a>
 </li>
 </ul>
 
 
-<blockquote>
-<p>JavaScript 脚本；</p>
-</blockquote>
+<h3 id="toc_0">1、视频元素</h3>
 
-<h3 id="toc_0">1、使用脚本</h3>
+<pre><code>&lt;video id=&quot;video&quot; width=&quot;420&quot; height=&quot;300&quot; controls autoplay loop muted
+       poster=&quot;xx.jpg&quot; preload=&quot;auto&quot;&gt;
+    &lt;source src=&quot;mov_bbb.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    &lt;source src=&quot;mov_bbb.ogg&quot; type=&quot;video/ogg&quot;&gt;
+    您的浏览器不支持 HTML5 video 标签。
+&lt;/video&gt;
 
-<pre><code>&lt;script&gt;
-    document.write(&quot;Hello World!&quot;);
+&lt;script&gt;
+    var v = document.getElementById(&#39;video&#39;);
 &lt;/script&gt;
 </code></pre>
 
-<h3 id="toc_1">2、禁用脚本处理</h3>
-
-<pre><code>&lt;noscript&gt;抱歉，你的浏览器不支持 JavaScript!&lt;/noscript&gt;
-</code></pre>
-
-<h3 id="toc_2">3、更多</h3>
+<h3 id="toc_1">2、方法</h3>
 
 <ul>
-<li>参考 JavaScript，详细了解；</li>
-<li><a href="http://www.runoob.com/js/js-tutorial.html">JavaScript 菜鸟基础</a></li>
+<li>检查支持</li>
 </ul>
+
+<pre><code>    var isSupp = v.canPlayType(&#39;video/mp4&#39;);
+    if (isSupp) {
+        v.play();
+    } else {
+        alert(&#39;不支持&#39;);
+    }
+</code></pre>
+
+<ul>
+<li>重载</li>
+</ul>
+
+<pre><code>    function reloadVideo() {
+        v.load();
+    }
+</code></pre>
+
+<ul>
+<li>播放、暂停</li>
+</ul>
+
+<pre><code>    function taggleView() {
+        if (v.paused) {
+            v.play();
+        } else {
+            v.pause();
+        }
+    }
+</code></pre>
+
+<h3 id="toc_2">3、属性</h3>
+
+<pre><code>audioTracks 返回表示可用音频轨道的 AudioTrackList 对象。
+autoplay    设置或返回是否在加载完成后随即播放音频/视频。
+buffered    返回表示音频/视频已缓冲部分的 TimeRanges 对象。
+controller  返回表示音频/视频当前媒体控制器的 MediaController 对象。
+controls    设置或返回音频/视频是否显示控件（比如播放/暂停等）。
+crossOrigin 设置或返回音频/视频的 CORS 设置。
+currentSrc  返回当前音频/视频的 URL。
+currentTime 设置或返回音频/视频中的当前播放位置（以秒计）。
+defaultMuted    设置或返回音频/视频默认是否静音。
+defaultPlaybackRate 设置或返回音频/视频的默认播放速度。
+duration    返回当前音频/视频的长度（以秒计）。
+ended   返回音频/视频的播放是否已结束。
+error   返回表示音频/视频错误状态的 MediaError 对象。
+loop    设置或返回音频/视频是否应在结束时重新播放。
+mediaGroup  设置或返回音频/视频所属的组合（用于连接多个音频/视频元素）。
+muted   设置或返回音频/视频是否静音。
+networkState    返回音频/视频的当前网络状态。
+paused  设置或返回音频/视频是否暂停。
+playbackRate    设置或返回音频/视频播放的速度。
+played  返回表示音频/视频已播放部分的 TimeRanges 对象。
+preload 设置或返回音频/视频是否应该在页面加载后进行加载。
+readyState  返回音频/视频当前的就绪状态。
+seekable    返回表示音频/视频可寻址部分的 TimeRanges 对象。
+seeking 返回用户是否正在音频/视频中进行查找。
+src 设置或返回音频/视频元素的当前来源。
+startDate   返回表示当前时间偏移的 Date 对象。
+textTracks  返回表示可用文本轨道的 TextTrackList 对象。
+videoTracks 返回表示可用视频轨道的 VideoTrackList 对象。
+volume  设置或返回音频/视频的音量。
+</code></pre>
+
+<h3 id="toc_3">4、事件</h3>
+
+<pre><code>abort   当音频/视频的加载已放弃时触发。
+canplay 当浏览器可以开始播放音频/视频时触发。
+canplaythrough  当浏览器可在不因缓冲而停顿的情况下进行播放时触发。
+durationchange  当音频/视频的时长已更改时触发。
+emptied 当目前的播放列表为空时触发。
+ended   当目前的播放列表已结束时触发。
+error   当在音频/视频加载期间发生错误时触发。
+loadeddata  当浏览器已加载音频/视频的当前帧时触发。
+loadedmetadata  当浏览器已加载音频/视频的元数据时触发。
+loadstart   当浏览器开始查找音频/视频时触发。
+pause   当音频/视频已暂停时触发。
+play    当音频/视频已开始或不再暂停时触发。
+playing 当音频/视频在因缓冲而暂停或停止后已就绪时触发。
+progress    当浏览器正在下载音频/视频时触发。
+ratechange  当音频/视频的播放速度已更改时触发。
+seeked  当用户已移动/跳跃到音频/视频中的新位置时触发。
+seeking 当用户开始移动/跳跃到音频/视频中的新位置时触发。
+stalled 当浏览器尝试获取媒体数据，但数据不可用时触发。
+suspend 当浏览器刻意不获取媒体数据时触发。
+timeupdate  当目前的播放位置已更改时触发。
+volumechange    当音量已更改时触发。
+waiting 当视频由于需要缓冲下一帧而停止时触发。
+</code></pre>
 
 
 </div>
@@ -340,15 +429,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.14%20%E9%A2%9C%E8%89%B2.html"  title="Previous Post: 1.14 颜色">&laquo; 1.14 颜色</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.15%20%E7%94%BB%E5%B8%83.html"  title="Previous Post: 1.15 画布">&laquo; 1.15 画布</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.16%20%E5%AE%9E%E4%BD%93.html" 
-	        title="Next Post: 1.16 实体">1.16 实体 &raquo;</a>
+	        <a href="%E3%80%90HTML%205%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.0%20%E5%BA%8F.html" 
+	        title="Next Post: 1.0 HTML 5 菜鸟基础">1.0 HTML 5 菜鸟基础 &raquo;</a>
 	    
 	</div>
   </div>
@@ -361,7 +450,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.15%20%E8%84%9A%E6%9C%AC.html';
+		var currentURL = '%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.16%20%E9%9F%B3%E9%A2%91%E3%80%81%E8%A7%86%E9%A2%91.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

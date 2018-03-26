@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  1.15 脚本 - 
+  1.13 代码规范 - 
   
   </title>
  <meta name="description" content="">
@@ -292,43 +292,115 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>1.15 脚本</h1>
+<h1>1.13 代码规范</h1>
 
 <ul>
 <li>
-<a href="#toc_0">1、使用脚本</a>
+<a href="#toc_0">文档类型</a>
 </li>
 <li>
-<a href="#toc_1">2、禁用脚本处理</a>
+<a href="#toc_1">小写元素</a>
 </li>
 <li>
-<a href="#toc_2">3、更多</a>
+<a href="#toc_2">关闭元素</a>
+</li>
+<li>
+<a href="#toc_3">小写属性</a>
+</li>
+<li>
+<a href="#toc_4">属性值双引号</a>
+</li>
+<li>
+<a href="#toc_5">图片</a>
+</li>
+<li>
+<a href="#toc_6">少用空格</a>
+</li>
+<li>
+<a href="#toc_7">缩进</a>
+</li>
+<li>
+<a href="#toc_8">引入 js 与 css</a>
+</li>
+<li>
+<a href="#toc_9">小写文件名</a>
+</li>
+<li>
+<a href="#toc_10">文件扩展名</a>
 </li>
 </ul>
 
 
 <blockquote>
-<p>JavaScript 脚本；</p>
+<p>使用 WebStorm 或者 PhpStorm 有非常严格的代码格式了，挺好用的。</p>
 </blockquote>
 
-<h3 id="toc_0">1、使用脚本</h3>
+<h3 id="toc_0">文档类型</h3>
 
-<pre><code>&lt;script&gt;
-    document.write(&quot;Hello World!&quot;);
-&lt;/script&gt;
+<pre><code>&lt;!DOCTYPE html&gt;
 </code></pre>
 
-<h3 id="toc_1">2、禁用脚本处理</h3>
+<h3 id="toc_1">小写元素</h3>
 
-<pre><code>&lt;noscript&gt;抱歉，你的浏览器不支持 JavaScript!&lt;/noscript&gt;
+<pre><code>&lt;p&gt;这是一个段落。&lt;/p&gt;
 </code></pre>
 
-<h3 id="toc_2">3、更多</h3>
+<h3 id="toc_2">关闭元素</h3>
+
+<pre><code>&lt;p&gt;这是一个段落。&lt;/p&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+</code></pre>
+
+<h3 id="toc_3">小写属性</h3>
+
+<pre><code>&lt;div class=&quot;menu&quot;&gt;
+</code></pre>
+
+<h3 id="toc_4">属性值双引号</h3>
+
+<pre><code>&lt;table class=&quot;table striped&quot;&gt;
+</code></pre>
+
+<h3 id="toc_5">图片</h3>
 
 <ul>
-<li>参考 JavaScript，详细了解；</li>
-<li><a href="http://www.runoob.com/js/js-tutorial.html">JavaScript 菜鸟基础</a></li>
+<li>使用 alt 属性；</li>
+<li>定宽高；</li>
 </ul>
+
+<pre><code>&lt;img src=&quot;html5.gif&quot; alt=&quot;HTML5&quot; style=&quot;width:128px;height:128px&quot;&gt;
+</code></pre>
+
+<h3 id="toc_6">少用空格</h3>
+
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+</code></pre>
+
+<h3 id="toc_7">缩进</h3>
+
+<ul>
+<li>建议 2 个空格，不建议 TAB；</li>
+</ul>
+
+<h3 id="toc_8">引入 js 与 css</h3>
+
+<pre><code>&lt;script src=&quot;myscript.js&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+</code></pre>
+
+<h3 id="toc_9">小写文件名</h3>
+
+<pre><code>logo.jpg
+utils.js
+my.css
+</code></pre>
+
+<h3 id="toc_10">文件扩展名</h3>
+
+<pre><code>.html
+.js
+.css
+</code></pre>
 
 
 </div>
@@ -340,15 +412,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.14%20%E9%A2%9C%E8%89%B2.html"  title="Previous Post: 1.14 颜色">&laquo; 1.14 颜色</a>
+	        <a href="%E3%80%90HTML%205%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.12%20WebSocket.html"  title="Previous Post: 1.12 WebSocket">&laquo; 1.12 WebSocket</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.16%20%E5%AE%9E%E4%BD%93.html" 
-	        title="Next Post: 1.16 实体">1.16 实体 &raquo;</a>
+	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.0%20%E5%BA%8F.html" 
+	        title="Next Post: 1.0 HTML 菜鸟基础">1.0 HTML 菜鸟基础 &raquo;</a>
 	    
 	</div>
   </div>
@@ -361,7 +433,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.15%20%E8%84%9A%E6%9C%AC.html';
+		var currentURL = '%E3%80%90HTML%205%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.13%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

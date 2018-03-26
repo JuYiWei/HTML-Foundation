@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  1.15 脚本 - 
+  1.15 画布 - 
   
   </title>
  <meta name="description" content="">
@@ -292,43 +292,374 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>1.15 脚本</h1>
+<h1>1.15 画布</h1>
 
 <ul>
 <li>
-<a href="#toc_0">1、使用脚本</a>
+<a href="#toc_0">1、画布元素与图形上下文</a>
 </li>
 <li>
-<a href="#toc_1">2、禁用脚本处理</a>
+<a href="#toc_1">2、颜色、样式和阴影</a>
+<ul>
+<li>
+<a href="#toc_2">fillStyle 填充</a>
 </li>
 <li>
-<a href="#toc_2">3、更多</a>
+<a href="#toc_3">strokeStyle 描边</a>
+</li>
+<li>
+<a href="#toc_4">shadow 阴影</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_5">3、线条样式</a>
+</li>
+<li>
+<a href="#toc_6">4、矩形</a>
+</li>
+<li>
+<a href="#toc_7">5、路径</a>
+<ul>
+<li>
+<a href="#toc_8">直线</a>
+</li>
+<li>
+<a href="#toc_9">贝塞尔曲线</a>
+</li>
+<li>
+<a href="#toc_10">圆</a>
+</li>
+<li>
+<a href="#toc_11">切弧</a>
+</li>
+<li>
+<a href="#toc_12">绘制</a>
+</li>
+<li>
+<a href="#toc_13">裁剪：先绘制闭合区域，裁剪之后，只能显示绘制在区域内的内容；</a>
+</li>
+<li>
+<a href="#toc_14">判断：点是否在路径上</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_15">6、转换</a>
+<ul>
+<li>
+<a href="#toc_16">scale 缩放；</a>
+</li>
+<li>
+<a href="#toc_17">rotate 旋转；</a>
+</li>
+<li>
+<a href="#toc_18">translate 重定义原点</a>
+</li>
+<li>
+<a href="#toc_19">transform 2d 矩阵变化，综合上述变化</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_20">7、文本</a>
+</li>
+<li>
+<a href="#toc_21">8、图片</a>
+</li>
+<li>
+<a href="#toc_22">9、像素</a>
+</li>
+<li>
+<a href="#toc_23">10、合成</a>
+</li>
+<li>
+<a href="#toc_24">11、其他</a>
 </li>
 </ul>
 
 
-<blockquote>
-<p>JavaScript 脚本；</p>
-</blockquote>
+<h3 id="toc_0">1、画布元素与图形上下文</h3>
 
-<h3 id="toc_0">1、使用脚本</h3>
+<ul>
+<li><code>getContext(&#39;2d&#39;)</code> 获取图形上下文，对其进行绘制处理；</li>
+</ul>
 
-<pre><code>&lt;script&gt;
-    document.write(&quot;Hello World!&quot;);
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;1000&quot; height=&quot;1000&quot; style=&quot;width: 1000px;height: 1000px;background-color: #D0D0D0&quot;&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+    var c = document.getElementById(&#39;canvas&#39;);
+    var ctx = c.getContext(&#39;2d&#39;);
+
 &lt;/script&gt;
 </code></pre>
 
-<h3 id="toc_1">2、禁用脚本处理</h3>
+<h3 id="toc_1">2、颜色、样式和阴影</h3>
 
-<pre><code>&lt;noscript&gt;抱歉，你的浏览器不支持 JavaScript!&lt;/noscript&gt;
-</code></pre>
-
-<h3 id="toc_2">3、更多</h3>
+<h4 id="toc_2">fillStyle 填充</h4>
 
 <ul>
-<li>参考 JavaScript，详细了解；</li>
-<li><a href="http://www.runoob.com/js/js-tutorial.html">JavaScript 菜鸟基础</a></li>
+<li>颜色填充；</li>
 </ul>
+
+<pre><code>    ctx.fillStyle = &#39;#FF0000&#39;;
+    ctx.rect(0, 0, 1000, 900);
+    ctx.fill();
+</code></pre>
+
+<ul>
+<li>线性渐变填充</li>
+</ul>
+
+<pre><code>    var gradient = ctx.createLinearGradient(0, 0, 1000, 1000);// (x1,y1,x2,y2)
+    gradient.addColorStop(0, &#39;red&#39;);
+    gradient.addColorStop(1, &#39;yellow&#39;);
+
+    ctx.fillStyle = gradient;
+</code></pre>
+
+<ul>
+<li>圆形渐变填充</li>
+</ul>
+
+<pre><code>    var gradient = ctx.createRadialGradient(100, 100, 30, 100, 100, 80);// (x1,y1,r1,x2,y2,r2)
+    gradient.addColorStop(0, &#39;red&#39;);
+    gradient.addColorStop(1, &#39;yellow&#39;);
+
+    ctx.fillStyle = gradient;
+</code></pre>
+
+<ul>
+<li>图像填充</li>
+</ul>
+
+<pre><code>    var img = document.getElementById(&#39;lamp&#39;);// 也可以 new Image();
+    img.onload = function () {
+        var pat = ctx.createPattern(img, &#39;repeat&#39;);
+        ctx.fillStyle = pat;
+    };
+</code></pre>
+
+<h4 id="toc_3">strokeStyle 描边</h4>
+
+<ul>
+<li>与 <code>fillStyle</code> 类似，略；</li>
+</ul>
+
+<pre><code>    ctx.strokeStyle = &#39;#FF0000&#39;;
+    ctx.rect(10, 10, 100, 100);
+    ctx.stroke();
+</code></pre>
+
+<h4 id="toc_4">shadow 阴影</h4>
+
+<pre><code>    ctx.shadowBlur = 20;
+    ctx.shadowColor = &#39;black&#39;;
+    ctx.shadowOffsetX = 20;
+    ctx.shadowOffsetY = 20;
+    
+</code></pre>
+
+<h3 id="toc_5">3、线条样式</h3>
+
+<pre><code>    ctx.lineWidth = 10;// 线宽
+    ctx.lineCap = &#39;square&#39;;// 结束帽 默认 butt 平直；round 圆；square 正方形；
+    ctx.lineJoin = &#39;miter&#39;;// 折角 默认 miter 尖角；bevel 斜角；round 圆角
+    ctx.miterLimit = 3;// miter 时，尖角限制；
+</code></pre>
+
+<h3 id="toc_6">4、矩形</h3>
+
+<pre><code>    ctx.rect(20, 20, 100, 100);// 矩形路径 (x, y, w, h)
+    ctx.strokeRect(100, 100, 200, 200);// 描边矩形
+    ctx.fillRect(300, 300, 300, 300);// 填充矩形
+    ctx.clearRect(0, 0, 300, 300);// 擦除 矩形内的绘制
+</code></pre>
+
+<h3 id="toc_7">5、路径</h3>
+
+<h4 id="toc_8">直线</h4>
+
+<pre><code>    ctx.beginPath();
+    ctx.moveTo(100, 100);// 起点
+    ctx.lineTo(200, 200);
+    ctx.lineTo(100, 200);
+    ctx.lineTo(200, 120);
+    ctx.closePath();// 连接起点和终点
+</code></pre>
+
+<h4 id="toc_9">贝塞尔曲线</h4>
+
+<pre><code>    ctx.beginPath();
+    ctx.moveTo(100, 100);// 起点
+    
+    ctx.quadraticCurveTo(120, 200, 200, 100);// （cx1, cy1, x2, y2）
+    ctx.bezierCurveTo(120, 200, 180, 200, 400, 100);// (cx1, cy1, cx2, cy2, x2, y2)
+</code></pre>
+
+<h4 id="toc_10">圆</h4>
+
+<pre><code>    ctx.arc(200, 200, 100, 0, Math.PI/2, true);// (x, y, r, startAngle, endAngle, clockwise) true = 逆时针
+</code></pre>
+
+<h4 id="toc_11">切弧</h4>
+
+<pre><code>    ctx.beginPath();
+    ctx.moveTo(200, 200);// 起点
+    ctx.arcTo(400, 200, 300, 300, 50);// 3 点作 2 条线，圆弧与 2 直线相切 (x1, y1, x2, y2, r)
+</code></pre>
+
+<h4 id="toc_12">绘制</h4>
+
+<pre><code>    ctx.stroke();
+    ctx.fill();
+</code></pre>
+
+<h4 id="toc_13">裁剪：先绘制闭合区域，裁剪之后，只能显示绘制在区域内的内容；</h4>
+
+<pre><code>    ctx.clip();
+</code></pre>
+
+<h4 id="toc_14">判断：点是否在路径上</h4>
+
+<pre><code>    ctx.rect(20,20,150,100);
+    if (ctx.isPointInPath(20, 50)) {
+        ctx.stroke();
+    } else {
+        ctx.fill();
+    }
+</code></pre>
+
+<h3 id="toc_15">6、转换</h3>
+
+<h4 id="toc_16">scale 缩放；</h4>
+
+<pre><code>    ctx.scale(2, 3);// （x, y） 倍数
+    ctx.rect(20, 20, 100,100);
+    ctx.stroke();
+    
+    // 对之后绘制产生影响，x,y,w,h 统一乘以倍数；
+</code></pre>
+
+<h4 id="toc_17">rotate 旋转；</h4>
+
+<pre><code>    ctx.rotate(Math.PI/8);
+    
+    // 同上
+</code></pre>
+
+<h4 id="toc_18">translate 重定义原点</h4>
+
+<pre><code>    ctx.translate(70,70);
+    
+    // 同上
+</code></pre>
+
+<h4 id="toc_19">transform 2d 矩阵变化，综合上述变化</h4>
+
+<pre><code>transform(a, b, c, d, e, f)
+
+x2 = ax1 + cy1 + e;
+y2 = bx1 + dy1 + f;
+
+// a、b 控制缩放
+// c、d 控制旋转
+// e、f 控制平移
+</code></pre>
+
+<h3 id="toc_20">7、文本</h3>
+
+<pre><code>    ctx.font=&quot;32px Arial&quot;;
+    ctx.textAlign=&quot;center&quot;;
+    ctx.textBaseline = &quot;top&quot;;
+    
+    ctx.fillText(&quot;Top&quot;, 100, 100);
+    ctx.strokeText(&quot;Hello World&quot;, 300, 100);
+
+    var w = ctx.measureText(&#39;Hello&#39;).width;// 计算文本宽度
+    console.log(w);
+</code></pre>
+
+<h3 id="toc_21">8、图片</h3>
+
+<pre><code>    var img = new Image();
+    img.src = &#39;icon.png&#39;;
+    var w = img.width;
+    var h = img.height;
+
+    img.onload = function () {
+        ctx.drawImage(img, 0, 0, w/2, h/3, 100, 150, w/2, h/3);// （裁剪位置，裁剪大小，图片位置，图片大小）
+    }
+</code></pre>
+
+<h3 id="toc_22">9、像素</h3>
+
+<pre><code>    var imgData = ctx.createImageData(300,300);
+
+    for (var i=0;i&lt;imgData.data.length;i+=4) {
+        imgData.data[i+0] = parseInt(Math.random()*255);// r
+        imgData.data[i+1] = parseInt(Math.random()*255);// g
+        imgData.data[i+2] = parseInt(Math.random()*255);// b
+        imgData.data[i+3] = parseInt(Math.random()*255);// a
+    }
+
+    ctx.putImageData(imgData, 100, 200);// (x, y)
+    
+
+    var w = imgData.width;
+    var h = imgData.height;
+    var data = imgData.data;
+    var subData = ctx.getImageData(0, 0, 10, 10);
+</code></pre>
+
+<h3 id="toc_23">10、合成</h3>
+
+<ul>
+<li>透明度</li>
+</ul>
+
+<pre><code>    ctx.globalAlpha = 0.5;
+</code></pre>
+
+<ul>
+<li>层级关系</li>
+</ul>
+
+<pre><code>    ctx.globalCompositeOperation=&quot;destination-over&quot;;
+    
+    
+//    source-over   默认。在目标图像上显示源图像。
+//    source-atop   在目标图像顶部显示源图像。源图像位于目标图像之外的部分是不可见的。
+//    source-in 在目标图像中显示源图像。只有目标图像之内的源图像部分会显示，目标图像是透明的。
+//    source-out    在目标图像之外显示源图像。只有目标图像之外的源图像部分会显示，目标图像是透明的。
+//    destination-over  在源图像上显示目标图像。
+//    destination-atop  在源图像顶部显示目标图像。目标图像位于源图像之外的部分是不可见的。
+//    destination-in    在源图像中显示目标图像。只有源图像之内的目标图像部分会被显示，源图像是透明的。
+//    destination-out   在源图像之外显示目标图像。只有源图像之外的目标图像部分会被显示，源图像是透明的。
+//    lighter   显示源图像 + 目标图像。
+//    copy  显示源图像。忽略目标图像。
+//    xor   使用异或操作对源图像与目标图像进行组合。
+</code></pre>
+
+<h3 id="toc_24">11、其他</h3>
+
+<blockquote>
+<p>canvas 元素的方法；</p>
+</blockquote>
+
+<ul>
+<li>save()</li>
+<li>restore()</li>
+<li>createEvent()</li>
+<li>getContext()</li>
+<li>toDataURL()</li>
+</ul>
+
+<pre><code>    var ctx = c.getContext(&#39;2d&#39;);
+    c.save();
+    c.restore();
+    var src = c.toDataURL();
+</code></pre>
 
 
 </div>
@@ -340,15 +671,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.14%20%E9%A2%9C%E8%89%B2.html"  title="Previous Post: 1.14 颜色">&laquo; 1.14 颜色</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.14%20%E4%BA%8B%E4%BB%B6.html"  title="Previous Post: 1.14 事件">&laquo; 1.14 事件</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.16%20%E5%AE%9E%E4%BD%93.html" 
-	        title="Next Post: 1.16 实体">1.16 实体 &raquo;</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.16%20%E9%9F%B3%E9%A2%91%E3%80%81%E8%A7%86%E9%A2%91.html" 
+	        title="Next Post: 1.16 音频、视频">1.16 音频、视频 &raquo;</a>
 	    
 	</div>
   </div>
@@ -361,7 +692,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.15%20%E8%84%9A%E6%9C%AC.html';
+		var currentURL = '%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.15%20%E7%94%BB%E5%B8%83.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

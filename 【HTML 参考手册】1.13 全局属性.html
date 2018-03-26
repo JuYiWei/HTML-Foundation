@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  1.15 脚本 - 
+  1.13 全局属性 - 
   
   </title>
  <meta name="description" content="">
@@ -292,43 +292,165 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>1.15 脚本</h1>
+<h1>1.13 全局属性</h1>
 
 <ul>
 <li>
-<a href="#toc_0">1、使用脚本</a>
+<a href="#toc_0">1、accesskey 键盘快捷键</a>
 </li>
 <li>
-<a href="#toc_1">2、禁用脚本处理</a>
+<a href="#toc_1">2、class 样式类</a>
 </li>
 <li>
-<a href="#toc_2">3、更多</a>
+<a href="#toc_2">3、dir 文本方向</a>
+</li>
+<li>
+<a href="#toc_3">4、id 唯一码</a>
+</li>
+<li>
+<a href="#toc_4">5、lang 内容语言</a>
+</li>
+<li>
+<a href="#toc_5">6、style 样式</a>
+</li>
+<li>
+<a href="#toc_6">7、tabindex Tab 切换顺序</a>
+</li>
+<li>
+<a href="#toc_7">8、title 提示文本</a>
+</li>
+<li>
+<a href="#toc_8">9、contenteditable 内容可编辑</a>
+</li>
+<li>
+<a href="#toc_9">10、contextmenu 元素右键菜单</a>
+</li>
+<li>
+<a href="#toc_10">11、data-* 自定义属性</a>
+</li>
+<li>
+<a href="#toc_11">12、draggable 可拖动</a>
+</li>
+<li>
+<a href="#toc_12">13、dropzone 拖动数据</a>
+</li>
+<li>
+<a href="#toc_13">14、hidden</a>
+</li>
+<li>
+<a href="#toc_14">15、spellcheck 拼写检查</a>
+</li>
+<li>
+<a href="#toc_15">16、translate 翻译</a>
 </li>
 </ul>
 
+
+<h3 id="toc_0">1、accesskey 键盘快捷键</h3>
+
+<ul>
+<li><code>alt + accesskey</code> 或者 <code>control + alt + accesskey</code> 可触发，跟系统与浏览器有关；</li>
+</ul>
+
+<pre><code>&lt;a href=&quot;//www.runoob.com/html/html-tutorial.html&quot; accesskey=&quot;h&quot;&gt;HTML 教程&lt;/a&gt;&lt;br&gt;
+</code></pre>
+
+<h3 id="toc_1">2、class 样式类</h3>
+
+<pre><code>&lt;button class=&quot;btn btn-default&quot;&gt;保存&lt;/button&gt;
+</code></pre>
+
+<h3 id="toc_2">3、dir 文本方向</h3>
+
+<pre><code>&lt;p dir=&quot;rtl&quot;&gt;文本方向从右到左!&lt;/p&gt;
+
+ltr 默认，左到右
+rtl 右到左
+auto    自动，未知时推荐使用
+</code></pre>
+
+<h3 id="toc_3">4、id 唯一码</h3>
+
+<pre><code>&lt;p id=&quot;message&quot;&gt;Hello&lt;/p&gt;
+</code></pre>
+
+<h3 id="toc_4">5、lang 内容语言</h3>
+
+<pre><code>&lt;p lang=&quot;en&quot;&gt;english&lt;/p&gt;
+</code></pre>
+
+<h3 id="toc_5">6、style 样式</h3>
+
+<pre><code>&lt;p style=&quot;color:green;&quot;&gt;这是一个段落。&lt;/p&gt;
+</code></pre>
+
+<h3 id="toc_6">7、tabindex Tab 切换顺序</h3>
+
+<pre><code>&lt;a href=&quot;//www.runoob.com//&quot; tabindex=&quot;1&quot;&gt; runoob.com 菜鸟教程&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;//www.google.com/&quot; tabindex=&quot;3&quot;&gt;Google&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;//www.microsoft.com/&quot; tabindex=&quot;2&quot;&gt;Microsoft&lt;/a&gt;
+</code></pre>
+
+<h3 id="toc_7">8、title 提示文本</h3>
+
+<pre><code>&lt;p title=&quot;菜鸟教程&quot;&gt;菜鸟教程&lt;/p&gt;
+</code></pre>
+
+<h3 id="toc_8">9、contenteditable 内容可编辑</h3>
+
+<pre><code>&lt;p contenteditable=&quot;true&quot;&gt;这是一个可编辑段落。&lt;/p&gt;
+</code></pre>
+
+<h3 id="toc_9">10、contextmenu 元素右键菜单</h3>
 
 <blockquote>
-<p>JavaScript 脚本；</p>
+<p>几乎不支持该属性；</p>
 </blockquote>
 
-<h3 id="toc_0">1、使用脚本</h3>
+<pre><code>&lt;p contextmenu=&quot;supermenu&quot;&gt;右键单击该段落时出现。&lt;/p&gt;  
 
-<pre><code>&lt;script&gt;
-    document.write(&quot;Hello World!&quot;);
-&lt;/script&gt;
+&lt;menu id=&quot;supermenu&quot;&gt;
+  &lt;command label=&quot;Step 1: Write Tutorial&quot; onclick=&quot;doSomething()&quot;&gt;
+  &lt;command label=&quot;Step 2: Edit Tutorial&quot; onclick=&quot;doSomethingElse()&quot;&gt;
+&lt;/menu&gt;
 </code></pre>
 
-<h3 id="toc_1">2、禁用脚本处理</h3>
+<h3 id="toc_10">11、data-* 自定义属性</h3>
 
-<pre><code>&lt;noscript&gt;抱歉，你的浏览器不支持 JavaScript!&lt;/noscript&gt;
+<pre><code>&lt;p data-test=&quot;test&quot;&gt;测试段落&lt;/p&gt;  
 </code></pre>
 
-<h3 id="toc_2">3、更多</h3>
+<h3 id="toc_11">12、draggable 可拖动</h3>
 
-<ul>
-<li>参考 JavaScript，详细了解；</li>
-<li><a href="http://www.runoob.com/js/js-tutorial.html">JavaScript 菜鸟基础</a></li>
-</ul>
+<pre><code>&lt;p draggable=&quot;true&quot;&gt;这是一段可移动的段落。请把该段落拖入上面的矩形。&lt;/p&gt;
+</code></pre>
+
+<blockquote>
+<p>注：<br/>
+要实现拖动，还需要代码控制；</p>
+</blockquote>
+
+<h3 id="toc_12">13、dropzone 拖动数据</h3>
+
+<blockquote>
+<p>暂不支持；</p>
+</blockquote>
+
+<h3 id="toc_13">14、hidden</h3>
+
+<pre><code>&lt;p hidden&gt;这是一段隐藏的段落。&lt;/p&gt;
+</code></pre>
+
+<h3 id="toc_14">15、spellcheck 拼写检查</h3>
+
+<pre><code>&lt;input spellcheck=&quot;true&quot;&gt;
+</code></pre>
+
+<h3 id="toc_15">16、translate 翻译</h3>
+
+<blockquote>
+<p>暂不支持；</p>
+</blockquote>
 
 
 </div>
@@ -340,15 +462,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.14%20%E9%A2%9C%E8%89%B2.html"  title="Previous Post: 1.14 颜色">&laquo; 1.14 颜色</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.12%20%E7%A8%8B%E5%BA%8F%E5%85%83%E7%B4%A0.html"  title="Previous Post: 1.12 程序元素">&laquo; 1.12 程序元素</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.16%20%E5%AE%9E%E4%BD%93.html" 
-	        title="Next Post: 1.16 实体">1.16 实体 &raquo;</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.14%20%E4%BA%8B%E4%BB%B6.html" 
+	        title="Next Post: 1.14 事件">1.14 事件 &raquo;</a>
 	    
 	</div>
   </div>
@@ -361,7 +483,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.15%20%E8%84%9A%E6%9C%AC.html';
+		var currentURL = '%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.13%20%E5%85%A8%E5%B1%80%E5%B1%9E%E6%80%A7.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

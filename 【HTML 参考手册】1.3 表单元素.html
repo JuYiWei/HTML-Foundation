@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  1.15 脚本 - 
+  1.3 表单元素 - 
   
   </title>
  <meta name="description" content="">
@@ -292,43 +292,358 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>1.15 脚本</h1>
+<h1>1.3 表单元素</h1>
 
 <ul>
 <li>
-<a href="#toc_0">1、使用脚本</a>
+<a href="#toc_0">1、form 元素</a>
 </li>
 <li>
-<a href="#toc_1">2、禁用脚本处理</a>
+<a href="#toc_1">2、input</a>
+<ul>
+<li>
+<a href="#toc_2">text</a>
 </li>
 <li>
-<a href="#toc_2">3、更多</a>
+<a href="#toc_3">button</a>
+</li>
+<li>
+<a href="#toc_4">checkbox</a>
+</li>
+<li>
+<a href="#toc_5">file</a>
+</li>
+<li>
+<a href="#toc_6">hidden</a>
+</li>
+<li>
+<a href="#toc_7">image</a>
+</li>
+<li>
+<a href="#toc_8">password</a>
+</li>
+<li>
+<a href="#toc_9">radio</a>
+</li>
+<li>
+<a href="#toc_10">reset</a>
+</li>
+<li>
+<a href="#toc_11">submit</a>
+</li>
+<li>
+<a href="#toc_12">color</a>
+</li>
+<li>
+<a href="#toc_13">date</a>
+</li>
+<li>
+<a href="#toc_14">datetime</a>
+</li>
+<li>
+<a href="#toc_15">datetime-local</a>
+</li>
+<li>
+<a href="#toc_16">email</a>
+</li>
+<li>
+<a href="#toc_17">month</a>
+</li>
+<li>
+<a href="#toc_18">number</a>
+</li>
+<li>
+<a href="#toc_19">range</a>
+</li>
+<li>
+<a href="#toc_20">search</a>
+</li>
+<li>
+<a href="#toc_21">tel</a>
+</li>
+<li>
+<a href="#toc_22">time</a>
+</li>
+<li>
+<a href="#toc_23">url</a>
+</li>
+<li>
+<a href="#toc_24">week</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_25">3、textarea</a>
+</li>
+<li>
+<a href="#toc_26">4、button</a>
+</li>
+<li>
+<a href="#toc_27">5、select 选择</a>
+</li>
+<li>
+<a href="#toc_28">6、optgroup 分组选择</a>
+</li>
+<li>
+<a href="#toc_29">7、label 表单元素标题</a>
+</li>
+<li>
+<a href="#toc_30">8、fieldset 分组</a>
+</li>
+<li>
+<a href="#toc_31">9、datalist 模糊输入选择</a>
+</li>
+<li>
+<a href="#toc_32">10、output 计算</a>
 </li>
 </ul>
 
+
+<h3 id="toc_0">1、form 元素</h3>
+
+<pre><code>&lt;form  name=&quot;test-form&quot; method=&quot;post&quot; action=&quot;test.php&quot; target=&quot;_blank&quot;
+       autocomplete=&quot;on&quot; enctype=&quot;application/x-www-form-urlencoded&quot;
+       accept-charset=&quot;utf-8&quot; novalidate&gt;&lt;/form&gt;
+
+    &lt;!--
+    accept-charset  默认是文档字符集，可设置表单字符集
+    action  提交表单路径
+    autocomplete    自动填表，默认 on
+    enctype 表单编码方式，post 可用，默认 url 编码
+    method  提交方式，默认 get
+    novalidate  提交是不验证输入
+    target  提交表单打开位置
+    --&gt;
+</code></pre>
+
+<h3 id="toc_1">2、input</h3>
 
 <blockquote>
-<p>JavaScript 脚本；</p>
+<p>有很多 h5 新增的 type，支持并不是很好，用基本几个可以满足要求了；</p>
 </blockquote>
 
-<h3 id="toc_0">1、使用脚本</h3>
+<h4 id="toc_2">text</h4>
 
-<pre><code>&lt;script&gt;
-    document.write(&quot;Hello World!&quot;);
-&lt;/script&gt;
+<pre><code>    &lt;input name=&quot;user-id&quot; form=&quot;form-id&quot; autocomplete=&quot;on&quot; autofocus 
+           placeholder=&quot;用户名&quot; maxlength=&quot;10&quot; size=&quot;10&quot; required&gt;
+           
+    &lt;!--
+    name    提交时的 key
+    value   提交时的 value
+    form    绑定的表单，可以绑定多个
+    autocomplete    自动填写
+    autofocus   自动焦点
+    placeholder 提示文本
+    maxlength   最大限制长度
+    size    输入框文本长度
+    required    必填
+    
+    readonly    只读
+    disabled    不可用
+    multiple    多个
+    pattern     正则过滤
+    --&gt;
 </code></pre>
 
-<h3 id="toc_1">2、禁用脚本处理</h3>
+<h4 id="toc_3">button</h4>
 
-<pre><code>&lt;noscript&gt;抱歉，你的浏览器不支持 JavaScript!&lt;/noscript&gt;
+<pre><code>&lt;input type=&quot;button&quot; value=&quot;点我&quot; onclick=&quot;msg()&quot;&gt;
 </code></pre>
 
-<h3 id="toc_2">3、更多</h3>
+<h4 id="toc_4">checkbox</h4>
 
-<ul>
-<li>参考 JavaScript，详细了解；</li>
-<li><a href="http://www.runoob.com/js/js-tutorial.html">JavaScript 菜鸟基础</a></li>
-</ul>
+<pre><code>&lt;input type=&quot;checkbox&quot; checked name=&quot;vehicle[]&quot; value=&quot;Bike&quot;&gt; 我有一辆自行车&lt;br&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;vehicle[]&quot; value=&quot;Car&quot;&gt; 我有一辆小轿车&lt;br&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;vehicle[]&quot; value=&quot;Boat&quot;&gt; 我有一艘船&lt;br&gt;
+</code></pre>
+
+<h4 id="toc_5">file</h4>
+
+<pre><code>&lt;input type=&quot;file&quot; accept=&quot;image/png&quot; name=&quot;head-image&quot;&gt;
+</code></pre>
+
+<h4 id="toc_6">hidden</h4>
+
+<pre><code>&lt;input type=&quot;hidden&quot; name=&quot;country&quot; value=&quot;Norway&quot;&gt;
+</code></pre>
+
+<h4 id="toc_7">image</h4>
+
+<pre><code>    &lt;input type=&quot;image&quot; alt=&quot;图片&quot; height=&quot;100&quot; width=&quot;100&quot; formaction=&quot;url&quot; formmethod=&quot;post&quot; formtarget=&quot;url&quot;&gt;
+</code></pre>
+
+<h4 id="toc_8">password</h4>
+
+<pre><code>&lt;input type=&quot;password&quot; name=&quot;pwd&quot;&gt;
+</code></pre>
+
+<h4 id="toc_9">radio</h4>
+
+<pre><code>&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot;&gt; 男&lt;br&gt;
+&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;女&quot;&gt; 女
+</code></pre>
+
+<h4 id="toc_10">reset</h4>
+
+<pre><code>&lt;input type=&quot;reset&quot;&gt;
+</code></pre>
+
+<h4 id="toc_11">submit</h4>
+
+<pre><code>&lt;input type=&quot;submit&quot; formaction=&quot;url&quot; formmethod=&quot;post&quot; formtarget=&quot;url&quot;&gt;
+</code></pre>
+
+<h4 id="toc_12">color</h4>
+
+<pre><code>选择你喜欢的颜色: &lt;input type=&quot;color&quot; name=&quot;favcolor&quot;&gt;&lt;br&gt;
+</code></pre>
+
+<h4 id="toc_13">date</h4>
+
+<pre><code>生日: &lt;input type=&quot;date&quot; name=&quot;bday&quot;&gt;
+</code></pre>
+
+<h4 id="toc_14">datetime</h4>
+
+<pre><code>生日 (日期和时间): &lt;input type=&quot;datetime&quot; name=&quot;bdaytime&quot;&gt;
+</code></pre>
+
+<h4 id="toc_15">datetime-local</h4>
+
+<pre><code>生日 (日期和时间):&lt;input type=&quot;datetime-local&quot; name=&quot;bdaytime&quot;&gt;
+</code></pre>
+
+<h4 id="toc_16">email</h4>
+
+<pre><code>E-mail: &lt;input type=&quot;email&quot; name=&quot;usremail&quot;&gt;
+</code></pre>
+
+<h4 id="toc_17">month</h4>
+
+<pre><code>生日 ( 月和年 ): &lt;input type=&quot;month&quot; name=&quot;bdaymonth&quot;&gt;
+</code></pre>
+
+<h4 id="toc_18">number</h4>
+
+<pre><code>数量 ( 1 到 5 之间): &lt;input type=&quot;number&quot; name=&quot;quantity&quot; min=&quot;1&quot; max=&quot;5&quot;&gt;
+</code></pre>
+
+<h4 id="toc_19">range</h4>
+
+<pre><code>&lt;input type=&quot;range&quot; min=&quot;1&quot; max=&quot;9&quot; step=&quot;2&quot; value=&quot;3&quot;&gt;
+</code></pre>
+
+<h4 id="toc_20">search</h4>
+
+<pre><code>Search Google: &lt;input type=&quot;search&quot; name=&quot;googlesearch&quot;&gt;
+</code></pre>
+
+<h4 id="toc_21">tel</h4>
+
+<pre><code>电话号码: &lt;input type=&quot;tel&quot; name=&quot;usrtel&quot;&gt;
+</code></pre>
+
+<h4 id="toc_22">time</h4>
+
+<pre><code>选择时间: &lt;input type=&quot;time&quot; name=&quot;usr_time&quot;&gt;
+</code></pre>
+
+<h4 id="toc_23">url</h4>
+
+<pre><code>添加你的主页: &lt;input type=&quot;url&quot; name=&quot;homepage&quot;&gt;
+</code></pre>
+
+<h4 id="toc_24">week</h4>
+
+<pre><code>选择周: &lt;input type=&quot;week&quot; name=&quot;week_year&quot;&gt;
+</code></pre>
+
+<h3 id="toc_25">3、textarea</h3>
+
+<pre><code>    &lt;textarea rows=&quot;10&quot; cols=&quot;30&quot; placeholder=&quot;意见反馈&quot; autofocus form=&quot;form-id&quot; maxlength=&quot;200&quot; name=&quot;option&quot; required wrap=&quot;soft&quot;&gt;&lt;/textarea&gt;
+    
+    &lt;!--
+    rows    行
+    cols    列
+    wrap    是否提交换行
+    --&gt;
+</code></pre>
+
+<h3 id="toc_26">4、button</h3>
+
+<pre><code>    &lt;button type=&quot;submit&quot; autofocus form=&quot;form-id&quot; formaction=&quot;url&quot; formmethod=&quot;post&quot; 
+            formtarget=&quot;_bland&quot; formenctype=&quot;application/x-www-form-urlencoded&quot; 
+            formnovalidate name=&quot;ok&quot; value=&quot;123&quot;&gt;提交&lt;/button&gt;
+</code></pre>
+
+<h3 id="toc_27">5、select 选择</h3>
+
+<pre><code>    &lt;select autofocus form=&quot;form-id&quot; multiple=&quot;multiple&quot; name=&quot;select&quot; required size=&quot;3&quot;&gt;
+        &lt;option value=&quot;volvo&quot; selected label=&quot;vol&quot;&gt;Volvo&lt;/option&gt;
+        &lt;option value=&quot;saab&quot; label=&quot;saa&quot;&gt;Saab&lt;/option&gt;
+        &lt;option value=&quot;mercedes&quot; label=&quot;mer&quot;&gt;Mercedes&lt;/option&gt;
+        &lt;option value=&quot;audi&quot; label=&quot;aud&quot;&gt;Audi&lt;/option&gt;
+    &lt;/select&gt;
+    
+    &lt;!--
+    multiple    按住 command 多选
+    siize   显示个数
+    label   显示标题，不设置时，显示内容
+    --&gt;
+</code></pre>
+
+<h3 id="toc_28">6、optgroup 分组选择</h3>
+
+<pre><code>    &lt;select&gt;
+        &lt;optgroup label=&quot;水果&quot;&gt;
+            &lt;option value=&quot;1&quot;&gt;橘子&lt;/option&gt;
+            &lt;option value=&quot;2&quot;&gt;苹果&lt;/option&gt;
+        &lt;/optgroup&gt;
+        &lt;optgroup label=&quot;蔬菜&quot;&gt;
+            &lt;option value=&quot;11&quot;&gt;青菜&lt;/option&gt;
+            &lt;option value=&quot;22&quot;&gt;萝卜&lt;/option&gt;
+        &lt;/optgroup&gt;
+    &lt;/select&gt;
+</code></pre>
+
+<h3 id="toc_29">7、label 表单元素标题</h3>
+
+<pre><code>    &lt;label for=&quot;name&quot; form=&quot;form-id&quot;&gt;用户名&lt;/label&gt;
+    &lt;input id=&quot;name&quot;&gt;
+</code></pre>
+
+<h3 id="toc_30">8、fieldset 分组</h3>
+
+<pre><code>    &lt;fieldset name=&quot;sex&quot; form=&quot;form-id&quot;&gt;
+        &lt;legend&gt;单选&lt;/legend&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;male&quot; name=&quot;sex&quot; value=&quot;male&quot; /&gt;男
+        &lt;br /&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;female&quot; name=&quot;sex&quot; value=&quot;female&quot; /&gt;女
+    &lt;/fieldset&gt;
+</code></pre>
+
+<h3 id="toc_31">9、datalist 模糊输入选择</h3>
+
+<pre><code>    &lt;input list=&quot;browsers&quot; name=&quot;browser&quot;&gt;
+    &lt;datalist id=&quot;browsers&quot;&gt;
+        &lt;option value=&quot;Internet Explorer&quot;&gt;
+        &lt;option value=&quot;Firefox&quot;&gt;
+        &lt;option value=&quot;Chrome&quot;&gt;
+        &lt;option value=&quot;Opera&quot;&gt;
+        &lt;option value=&quot;Safari&quot;&gt;
+    &lt;/datalist&gt;
+</code></pre>
+
+<h3 id="toc_32">10、output 计算</h3>
+
+<pre><code>&lt;form oninput=&quot;x.value=parseInt(a.value)+parseInt(b.value)&quot;&gt;
+    0&lt;input type=&quot;range&quot; id=&quot;a&quot; value=&quot;50&quot;&gt;100
+    +
+    &lt;input type=&quot;number&quot; id=&quot;b&quot; value=&quot;50&quot;&gt;
+    =
+    &lt;output name=&quot;x&quot; for=&quot;a b&quot;&gt;&lt;/output&gt;
+&lt;/form&gt;
+</code></pre>
 
 
 </div>
@@ -340,15 +655,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.14%20%E9%A2%9C%E8%89%B2.html"  title="Previous Post: 1.14 颜色">&laquo; 1.14 颜色</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.2%20%E6%A0%BC%E5%BC%8F%E5%85%83%E7%B4%A0.html"  title="Previous Post: 1.2 格式元素">&laquo; 1.2 格式元素</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.16%20%E5%AE%9E%E4%BD%93.html" 
-	        title="Next Post: 1.16 实体">1.16 实体 &raquo;</a>
+	        <a href="%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.4%20%E6%A1%86%E6%9E%B6%E5%85%83%E7%B4%A0.html" 
+	        title="Next Post: 1.4 框架元素">1.4 框架元素 &raquo;</a>
 	    
 	</div>
   </div>
@@ -361,7 +676,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '%E3%80%90HTML%20%E8%8F%9C%E9%B8%9F%E5%9F%BA%E7%A1%80%E3%80%911.15%20%E8%84%9A%E6%9C%AC.html';
+		var currentURL = '%E3%80%90HTML%20%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E3%80%911.3%20%E8%A1%A8%E5%8D%95%E5%85%83%E7%B4%A0.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
